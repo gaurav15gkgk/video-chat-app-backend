@@ -8,7 +8,8 @@ import {
     getUsers,
     checkIfUserExistByEmail,
     updateUser,
-    deleteUser
+    deleteUser,
+    checkIfUserExistByUsername
 } from '../repository/user.js'
 
 import sendMail from '../utils/mail.js'
@@ -62,7 +63,7 @@ export const updateUserService = (userName, updateObject) => {
             if(updateField == 'password'){
                 const currentPassword = updateObject.currentPassword
                 const newPassword = updateObject.newPassword
-                const userPresent = await checkIfUserExist(userName);
+                const userPresent = await checkIfUserExistByUsername(userName);
                 
                 if(!userPresent.data) {
                     console.log(`User doesn't exist`)

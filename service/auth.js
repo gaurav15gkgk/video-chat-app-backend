@@ -78,7 +78,7 @@ export const signupUserService = (name, userName ,email, password) => {
 export const signinUserService = (userName, password) => {
     return new Promise(async (resolve, reject) => {
         //checking if the user exists or not
-        const userPresent = await checkIfUserExist(userName);
+        const userPresent = await checkIfUserExistByUsername(userName);
 
         if(!userPresent.data) {
             console.log(`User doesn't exist`)
@@ -172,7 +172,7 @@ export const sendForgotPasswordEmailService = (email) => {
                     msg : userPresent.msg
                 })
             }
-            const {_id, name, userName} = userPresent
+            const {_id, name, userName} = userPresent.data
             const token = jwt.sign(
                 {_id : _id,name : name, userName: userName, email : email }, 
                 jwtSecret, 

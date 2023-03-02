@@ -48,8 +48,8 @@ export const updateUserController = async(req, res) => {
 
         const updatedUser = await updateUserService(userName, updateObject)
         return res.status(updatedUser.code).json({
-            msg: updatedUser.msq,
-            data : updatedUser.data
+            msg: updatedUser.msg,
+            data : null
         })
 
     } catch (error) {

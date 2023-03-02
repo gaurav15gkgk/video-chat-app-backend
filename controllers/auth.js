@@ -32,8 +32,8 @@ export const SignInController = async(req, res) => {
         const {userName, password} = req.body
         const userSignIn = await signinUserService(userName, password)
 
-        const code =  error.code ? error.code : 500
-        return res.status(code).json({
+     
+        return res.status(userSignIn.code).json({
             msg: userSignIn.msg,
             data : userSignIn.data
         })
@@ -56,7 +56,7 @@ export const verifyUserEmailController = async(req, res) => {
 
         return res.status(updatedUser.code).json({
             msg: updatedUser.msg,
-            data : updatedUser.data
+            data : null
         })
     } catch (error) {
         console.error(error)

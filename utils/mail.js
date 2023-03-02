@@ -25,7 +25,7 @@ const transporter = nodemailer.createTransport({
 
 const sendMail = async ( to ,subject, text ) => {
       let mailOptions = {
-        from: `"senderNameSameLikeTheZohoOne" ${emailUsername}`,
+        from: `"VidMeetUp Support" ${emailUsername}`,
         to: to,
         subject: subject,
         html: text

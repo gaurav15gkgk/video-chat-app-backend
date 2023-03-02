@@ -8,8 +8,7 @@ import {
 import {
     onlyCharRegex,
     emailIdRegex,
-    passwordRegex,
-    jwtRegex
+    passwordRegex
 } from '../utils/commonRegex.js'
 
 // update user validator 
@@ -19,7 +18,7 @@ export const updateUserValidator = async(req, res, next) => {
             {
                 parameter: 'updateObject',
                 type: 'object',
-                expressionType: '',
+                expressionType: 'typeof',
                 validExpression: ''
             }
         ]
@@ -94,7 +93,7 @@ export const updateUserValidator = async(req, res, next) => {
         else if(updateField == 'name'){
             validParameters = [
                 {
-                    parameter: 'name',
+                    parameter: 'newName',
                     type: '',
                     expressionType: 'regex',
                     validExpression: onlyCharRegex

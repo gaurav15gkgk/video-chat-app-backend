@@ -32,14 +32,14 @@ export const authenticateUser = async(req, res, next) => {
 
         const userName = user.userName
         const fetchedUser = await getUserService(userName)
-        req.user = fetchedUser
+        req.user = fetchedUser.data
 
         next()
 
     } catch (error) {
         console.error(error)
-        return res.status(500).json({
-            "msg": "Internal Server error",
+        return res.status(403).json({
+            "msg": "Token expired",
             data: null
         })
     }

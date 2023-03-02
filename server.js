@@ -1,8 +1,13 @@
+//importing libraries
 import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
+
+//importing routes
+import authRoute from './routes/auth.js'
+import profileRoute from './routes/user.js'
 
 const app = express()
 
@@ -13,6 +18,9 @@ app.use(cors())
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/user/auth', authRoute)
+app.use('/user/profile', profileRoute)
 
 const PORT = process.env.PORT
 const mongodb_uri = process.env.MONGODB_URI
